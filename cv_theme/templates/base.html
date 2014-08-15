@@ -1,0 +1,196 @@
+    <!DOCTYPE html>
+    <html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %} class="no-js one-page-layout" data-classic-layout="false" data-mobile-only-classic-layout="true" data-inAnimation="fadeInUp" data-outAnimation="fadeOutDownBig"><!-- InstanceBegin template="/Templates/layout.dwt" codeOutsideHTMLIsLocked="false" -->
+
+
+{% load pages_tags mezzanine_tags i18n future staticfiles %}
+
+
+
+    <head>
+
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <!--
+        Tag below will make design work on IE 8 but will break wc3 validation
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" > 
+        -->  
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="description" content="{% block meta_description %}{% endblock %}">
+        <meta name="keywords" content="{% block meta_keywords %}{% endblock %}">
+        <meta name="author" content="Pixelwars">
+
+        <title>{% block meta_title %}{% endblock %}{% if settings.SITE_TITLE %} | {{ settings.SITE_TITLE }}{% endif %}</title>
+
+
+        <!-- FAV and TOUCH ICONS -->
+        <link rel="shortcut icon" href="{% static 'images/ico/favicon.ico' %}">
+        <link rel="apple-touch-icon" href="{% static 'images/ico/apple-touch-icon.png' %}"/>
+
+
+        <!-- FONTS -->
+        <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900,100italic,300italic,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Tangerine:400,700' rel='stylesheet' type='text/css'>
+
+
+{% ifinstalled mezzanine.blog %}
+<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
+<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
+{% endifinstalled %}
+
+{% compress css %}
+<!--
+<link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+<link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
+<link rel="stylesheet" href="{% static "css/bootstrap-theme.css" %}">
+-->
+        <!-- STYLES -->
+        <link rel="stylesheet" type="text/css" media="print" href="{% static "css/print.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "css/normalize.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "css/bootstrap.min.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "js/nprogress/nprogress.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "css/animate.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "css/fonts/font-awesome/css/font-awesome.min.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "css/fonts/fontello/css/fontello.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "css/jquery.fancybox-1.3.4.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "js/google-code-prettify/prettify.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "css/uniform.default.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "css/flexslider.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "js/mediaelement/mediaelementplayer.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "css/tooltipster.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
+
+{% if LANGUAGE_BIDI %}
+<link rel="stylesheet" href="{% static "css/rtl.css" %}">
+{% endif %}
+{% ifinstalled cartridge.shop %}
+<link rel="stylesheet" href="{% static "css/cartridge.css" %}">
+{% if LANGUAGE_BIDI %}
+<link rel="stylesheet" href="{% static "css/cartridge.rtl.css" %}">
+{% endif %}
+{% endifinstalled %}
+{% block extra_css %}{% endblock %}
+{% endcompress %}
+
+{% compress js %}
+<!--
+<script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
+<script src="{% static "js/bootstrap.js" %}"></script>
+<script src="{% static "js/bootstrap-extras.js" %}"></script>
+-->
+        <script src="{% static 'js/modernizr.custom.js' %}"></script>
+
+{% block extra_js %}{% endblock %}
+{% endcompress %}
+
+        <!--[if lte IE 9]>
+            <script src="{% static "js/html5shiv.js" %}"></script>
+            <script src="{% static "js/respond.min.js" %}"></script>
+            <script src="{% static "js/selectivizr-min.js" %}"></script>
+        <![endif]--> 
+
+        <!-- InstanceBeginEditable name="head" -->
+        <!-- InstanceEndEditable -->
+
+{% block extra_head %}{% endblock %}
+</head>
+
+
+<body id="{% block body_id %}body{% endblock %}">
+
+    <!-- Using default mezzanine body tag instead of new template one 
+    <body>
+    -->
+
+        <!-- CONTAINER -->
+        <div class="container" id="container">
+            
+            
+            
+            <!-- HEADER -->
+            <header class="header">
+            
+                <img src="images/site/avatar.png" alt="avatar">
+                <h1>Johnny Doe</h1>
+                <p>freelance graphic designer</p>
+                
+                <!-- NAV MENU -->
+                <ul class="vs-nav">
+                    
+                    <!-- InstanceBeginEditable name="Menu-Content" -->
+                    
+                    <!-- Using default mezzanine pages/menus/dropdown.html
+                    <li><a href="#/about">about me</a></li>
+                    <li><a href="#/portfolio">portfolio</a></li>
+                    <li><a href="#/contact">contact</a></li>
+                    <li><a href="#/blog">blog</a></li>
+                    <li><a href="#/resume">resume</a></li>
+                    -->
+                    {% page_menu "pages/menus/dropdown.html" %}
+                    
+                    <!-- InstanceEndEditable -->
+                    
+                </ul>
+                <!-- NAV MENU -->
+                
+                <!-- SEARCH --> 
+                <div class="header-search">
+                    <!-- Using default mezzanine {% search_form "all" %}
+                    <form role="search" method="get" id="search-form" action="#">
+                      <input type="text" value="" name="s" id="search" placeholder="ENTER KEYWORD">
+                      <input type="submit" id="search-submit" title="Search" value="→">
+                    </form>
+                    -->
+                    {% search_form "all" %}
+                </div>
+                <!-- SEARCH -->
+                
+            </header>
+            <!-- HEADER -->
+
+
+            <!-- WRAPPER -->
+            <div class="wrapper">
+            
+            
+            
+                <!-- InstanceBeginEditable name="Page-Content" -->
+
+                {% block main %}{% endblock %}
+
+                <!-- InstanceEndEditable -->
+            
+            
+                
+            </div>
+            <!-- WRAPPER -->
+            
+            
+        </div>
+        <!-- CONTAINER -->
+
+
+
+
+        <!-- InstanceBeginEditable name="Body-End-Content" -->
+        
+        
+        <!-- PORTFOLIO SINGLE AJAX CONTENT CONTAINER -->
+        <div class="p-overlay"></div>
+        <div class="p-overlay"></div>
+        
+
+        <!-- ALERT : used for contact form mail delivery alert -->
+        <div class="site-alert animated"></div>
+        
+        
+        <!-- InstanceEndEditable -->
+
+
+
+
+{% include "includes/footer_scripts.html" %}
+
+</body>
+<!-- InstanceEnd --></html>
