@@ -39,11 +39,7 @@
 {% endifinstalled %}
 
 {% compress css %}
-<!--
-<link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
-<link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
-<link rel="stylesheet" href="{% static "css/bootstrap-theme.css" %}">
--->
+
         <!-- STYLES -->
         <link rel="stylesheet" type="text/css" media="print" href="{% static "css/print.css" %}">
         <link rel="stylesheet" type="text/css" href="{% static "css/normalize.css" %}">
@@ -60,6 +56,7 @@
         <link rel="stylesheet" type="text/css" href="{% static "css/tooltipster.css" %}">
         <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
         <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "css/skins/flat.css" %}">
 
 {% if LANGUAGE_BIDI %}
 <link rel="stylesheet" href="{% static "css/rtl.css" %}">
@@ -74,11 +71,7 @@
 {% endcompress %}
 
 {% compress js %}
-<!--
-<script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>
-<script src="{% static "js/bootstrap.js" %}"></script>
-<script src="{% static "js/bootstrap-extras.js" %}"></script>
--->
+
         <script src="{% static 'js/modernizr.custom.js' %}"></script>
 
 {% block extra_js %}{% endblock %}
@@ -96,96 +89,83 @@
 {% block extra_head %}{% endblock %}
 </head>
 
+    
+<body>
 
-<body id="{% block body_id %}body{% endblock %}">
 
-    <!-- Using default mezzanine body tag instead of new template one 
-    <body>
-    -->
-
-        <!-- CONTAINER -->
-        <div class="container" id="container">
+    <!-- CONTAINER -->
+    <div class="container" id="container">
+        
+        
+        
+        <!-- HEADER -->
+        <header class="header">
+        
+            <img src="{% static "images/site/avatar.png" %}" alt="avatar">
+            <h1>Johnny Doe</h1>
+            <p>freelance graphic designer</p>
             
-            
-            
-            <!-- HEADER -->
-            <header class="header">
-            
-                <img src="images/site/avatar.png" alt="avatar">
-                <h1>Johnny Doe</h1>
-                <p>freelance graphic designer</p>
+            <!-- NAV MENU -->
+            <ul class="vs-nav">
                 
-                <!-- NAV MENU -->
-                <ul class="vs-nav">
-                    
-                    <!-- InstanceBeginEditable name="Menu-Content" -->
-                    
-                    <!-- Using default mezzanine pages/menus/dropdown.html
-                    <li><a href="#/about">about me</a></li>
-                    <li><a href="#/portfolio">portfolio</a></li>
-                    <li><a href="#/contact">contact</a></li>
-                    <li><a href="#/blog">blog</a></li>
-                    <li><a href="#/resume">resume</a></li>
-                    -->
-                    {% page_menu "pages/menus/dropdown.html" %}
-                    
-                    <!-- InstanceEndEditable -->
-                    
-                </ul>
-                <!-- NAV MENU -->
+                <!-- InstanceBeginEditable name="Menu-Content" -->
                 
-                <!-- SEARCH --> 
-                <div class="header-search">
-                    <!-- Using default mezzanine {% search_form "all" %}
-                    <form role="search" method="get" id="search-form" action="#">
-                      <input type="text" value="" name="s" id="search" placeholder="ENTER KEYWORD">
-                      <input type="submit" id="search-submit" title="Search" value="→">
-                    </form>
-                    -->
-                    {% search_form "all" %}
-                </div>
-                <!-- SEARCH -->
+                <li><a href="#/about">about me</a></li>
+                <li><a href="#/portfolio">portfolio</a></li>
+                <li><a href="#/contact">contact</a></li>
+                <li><a href="#/blog">blog</a></li>
+                <li><a href="#/resume">resume</a></li>
                 
-            </header>
-            <!-- HEADER -->
-
-
-            <!-- WRAPPER -->
-            <div class="wrapper">
-            
-            
-            
-                <!-- InstanceBeginEditable name="Page-Content" -->
-
-                {% block main %}{% endblock %}
-
                 <!-- InstanceEndEditable -->
-            
-            
                 
-            </div>
-            <!-- WRAPPER -->
+            </ul>
+            <!-- NAV MENU -->
             
+            <!-- SEARCH --> 
+            <div class="header-search">
+                <form role="search" method="get" id="search-form" action="#">
+                  <input type="text" value="" name="s" id="search" placeholder="ENTER KEYWORD">
+                  <input type="submit" id="search-submit" title="Search" value="→">
+                </form>
+            </div>
+            <!-- SEARCH -->
+            
+        </header>
+        <!-- HEADER -->
+
+
+        <!-- WRAPPER -->
+        <div class="wrapper">
+        
+            <!-- InstanceBeginEditable name="Page-Content" -->
+
+            {% block main %}{% endblock %}
+
+            <!-- InstanceEndEditable -->
             
         </div>
-        <!-- CONTAINER -->
+        <!-- WRAPPER -->
+        
+        
+    </div>
+    <!-- CONTAINER -->
 
 
 
 
-        <!-- InstanceBeginEditable name="Body-End-Content" -->
-        
-        
-        <!-- PORTFOLIO SINGLE AJAX CONTENT CONTAINER -->
-        <div class="p-overlay"></div>
-        <div class="p-overlay"></div>
-        
+    <!-- InstanceBeginEditable name="Body-End-Content" -->
+    
+    
+    <!-- PORTFOLIO SINGLE AJAX CONTENT CONTAINER -->
+    <div class="p-overlay"></div>
+    <div class="p-overlay"></div>
+    
 
-        <!-- ALERT : used for contact form mail delivery alert -->
-        <div class="site-alert animated"></div>
-        
-        
-        <!-- InstanceEndEditable -->
+    <!-- ALERT : used for contact form mail delivery alert -->
+    <div class="site-alert animated"></div>
+    
+    
+    <!-- InstanceEndEditable -->
 
 
 
