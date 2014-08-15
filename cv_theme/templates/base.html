@@ -1,14 +1,13 @@
-    <!DOCTYPE html>
-    <html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %} class="no-js one-page-layout" data-classic-layout="false" data-mobile-only-classic-layout="true" data-inAnimation="fadeInUp" data-outAnimation="fadeOutDownBig"><!-- InstanceBegin template="/Templates/layout.dwt" codeOutsideHTMLIsLocked="false" -->
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %} class="no-js one-page-layout" data-classic-layout="false" data-mobile-only-classic-layout="true" data-inAnimation="fadeInUp" data-outAnimation="fadeOutDownBig"><!-- InstanceBegin template="/Templates/layout.dwt" codeOutsideHTMLIsLocked="false" -->
 
 
-{% load pages_tags mezzanine_tags i18n future staticfiles %}
-
-
+    {% load pages_tags mezzanine_tags i18n future staticfiles %}
+    
 
     <head>
 
-<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
         <!--
         Tag below will make design work on IE 8 but will break wc3 validation
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" > 
@@ -33,12 +32,12 @@
         <link href='http://fonts.googleapis.com/css?family=Tangerine:400,700' rel='stylesheet' type='text/css'>
 
 
-{% ifinstalled mezzanine.blog %}
-<link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
-<link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
-{% endifinstalled %}
+        {% ifinstalled mezzanine.blog %}
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
+        <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
+        {% endifinstalled %}
 
-{% compress css %}
+        {% compress css %}
 
         <!-- STYLES -->
         <link rel="stylesheet" type="text/css" media="print" href="{% static "css/print.css" %}">
@@ -58,24 +57,24 @@
         <link rel="stylesheet" type="text/css" href="{% static "css/main.css" %}">
         <link rel="stylesheet" type="text/css" href="{% static "css/skins/flat.css" %}">
 
-{% if LANGUAGE_BIDI %}
-<link rel="stylesheet" href="{% static "css/rtl.css" %}">
-{% endif %}
-{% ifinstalled cartridge.shop %}
-<link rel="stylesheet" href="{% static "css/cartridge.css" %}">
-{% if LANGUAGE_BIDI %}
-<link rel="stylesheet" href="{% static "css/cartridge.rtl.css" %}">
-{% endif %}
-{% endifinstalled %}
-{% block extra_css %}{% endblock %}
-{% endcompress %}
+        {% if LANGUAGE_BIDI %}
+        <link rel="stylesheet" href="{% static "css/rtl.css" %}">
+        {% endif %}
+        {% ifinstalled cartridge.shop %}
+        <link rel="stylesheet" href="{% static "css/cartridge.css" %}">
+        {% if LANGUAGE_BIDI %}
+        <link rel="stylesheet" href="{% static "css/cartridge.rtl.css" %}">
+        {% endif %}
+        {% endifinstalled %}
+        {% block extra_css %}{% endblock %}
+        {% endcompress %}
 
-{% compress js %}
+        {% compress js %}
 
         <script src="{% static 'js/modernizr.custom.js' %}"></script>
 
-{% block extra_js %}{% endblock %}
-{% endcompress %}
+        {% block extra_js %}{% endblock %}
+        {% endcompress %}
 
         <!--[if lte IE 9]>
             <script src="{% static "js/html5shiv.js" %}"></script>
@@ -86,91 +85,93 @@
         <!-- InstanceBeginEditable name="head" -->
         <!-- InstanceEndEditable -->
 
-{% block extra_head %}{% endblock %}
-</head>
+        {% block extra_head %}{% endblock %}
+    </head>
 
     
-<body>
+    <body>
 
 
-    <!-- CONTAINER -->
-    <div class="container" id="container">
-        
-        
-        
-        <!-- HEADER -->
-        <header class="header">
-        
-            <img src="{% static "images/site/avatar.png" %}" alt="avatar">
-            <h1>Johnny Doe</h1>
-            <p>freelance graphic designer</p>
+        <!-- CONTAINER -->
+        <div class="container" id="container">
             
-            <!-- NAV MENU -->
-            <ul class="vs-nav">
+            
+            
+            <!-- HEADER -->
+            <header class="header">
+            
+                <img src="{% static "images/site/avatar.png" %}" alt="avatar">
+                <h1>Johnny Doe</h1>
+                <p>freelance graphic designer</p>
                 
-                <!-- InstanceBeginEditable name="Menu-Content" -->
+                <!-- NAV MENU -->
+                <ul class="vs-nav">
+                    
+                    <!-- InstanceBeginEditable name="Menu-Content" -->
+                    
+                    <li><a href="#/about">about me</a></li>
+                    <li><a href="#/portfolio">portfolio</a></li>
+                    <li><a href="#/contact">contact</a></li>
+                    <li><a href="#/blog">blog</a></li>
+                    <li><a href="#/resume">resume</a></li>
+                    
+                    <!-- InstanceEndEditable -->
+                    
+                </ul>
+                <!-- NAV MENU -->
                 
-                <li><a href="#/about">about me</a></li>
-                <li><a href="#/portfolio">portfolio</a></li>
-                <li><a href="#/contact">contact</a></li>
-                <li><a href="#/blog">blog</a></li>
-                <li><a href="#/resume">resume</a></li>
+                <!-- SEARCH --> 
+                <div class="header-search">
+                    <form role="search" method="get" id="search-form" action="#">
+                      <input type="text" value="" name="s" id="search" placeholder="ENTER KEYWORD">
+                      <input type="submit" id="search-submit" title="Search" value="→">
+                    </form>
+                </div>
+                <!-- SEARCH -->
                 
+            </header>
+            <!-- HEADER -->
+
+
+            <!-- WRAPPER -->
+            <div class="wrapper">
+            
+                <!-- InstanceBeginEditable name="Page-Content" -->
+
+                {% block main %}{% endblock %}
+
                 <!-- InstanceEndEditable -->
                 
-            </ul>
-            <!-- NAV MENU -->
-            
-            <!-- SEARCH --> 
-            <div class="header-search">
-                <form role="search" method="get" id="search-form" action="#">
-                  <input type="text" value="" name="s" id="search" placeholder="ENTER KEYWORD">
-                  <input type="submit" id="search-submit" title="Search" value="→">
-                </form>
             </div>
-            <!-- SEARCH -->
+            <!-- WRAPPER -->
             
-        </header>
-        <!-- HEADER -->
-
-
-        <!-- WRAPPER -->
-        <div class="wrapper">
-        
-            <!-- InstanceBeginEditable name="Page-Content" -->
-
-            {% block main %}{% endblock %}
-
-            <!-- InstanceEndEditable -->
             
         </div>
-        <!-- WRAPPER -->
+        <!-- CONTAINER -->
+
+
+
+
+        <!-- InstanceBeginEditable name="Body-End-Content" -->
         
         
-    </div>
-    <!-- CONTAINER -->
+        <!-- PORTFOLIO SINGLE AJAX CONTENT CONTAINER -->
+        <div class="p-overlay"></div>
+        <div class="p-overlay"></div>
+        
+
+        <!-- ALERT : used for contact form mail delivery alert -->
+        <div class="site-alert animated"></div>
+        
+        
+        <!-- InstanceEndEditable -->
 
 
 
 
-    <!-- InstanceBeginEditable name="Body-End-Content" -->
-    
-    
-    <!-- PORTFOLIO SINGLE AJAX CONTENT CONTAINER -->
-    <div class="p-overlay"></div>
-    <div class="p-overlay"></div>
-    
+    {% include "includes/footer_scripts.html" %}
 
-    <!-- ALERT : used for contact form mail delivery alert -->
-    <div class="site-alert animated"></div>
-    
-    
-    <!-- InstanceEndEditable -->
+    </body>
 
-
-
-
-{% include "includes/footer_scripts.html" %}
-
-</body>
-<!-- InstanceEnd --></html>
+<!-- InstanceEnd -->
+</html>
