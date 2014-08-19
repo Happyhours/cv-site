@@ -33,6 +33,10 @@ urlpatterns += patterns('',
 
     url("^$", direct_to_template, {"template": "index.html"}, name="home"),
 
+    url("^one", direct_to_template, {"template": "one.html"}, name="one"),
+    url("^two", direct_to_template, {"template": "two.html"}, name="two"),
+    url("^three", direct_to_template, {"template": "three.html"}, name="three"),
+
     # HOMEPAGE AS AN EDITABLE PAGE IN THE PAGE TREE
     # ---------------------------------------------
     # This pattern gives us a normal ``Page`` object, so that your
