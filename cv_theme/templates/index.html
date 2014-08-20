@@ -1,180 +1,415 @@
 {% extends "base.html" %}
-{% load i18n staticfiles %}
+{% load i18n staticfiles blog_tags %}
 
 {% block meta_title %}{% trans "Home" %}{% endblock %}
 {% block title %}{% trans "Home" %}{% endblock %}
 
 
 {% block main %}
- 
-<!-- PAGE : BLOG -->
-<section id="blog" class="page">
+
+<!-- PAGE : ABOUT -->
+<section id="about" class="page">
     <div class="content">
-        
-        
-        
-        
-        <h2 class="section-title center"><span><i class="icon-book-open"></i>LATEST FROM THE BLOG</span></h2>
-        
-        <!-- LATEST POSTS -->   
-        <div class="latest-posts media-grid" data-layout="fitRows">
-        
+    
+        <!-- row -->
+        <div class="row">
             
-            <!-- post -->
-            <article class="hentry media-cell">
+            <!-- column 8/12 -->
+            <div class="col-md-8">
                 
-                <div class="media-box">
-                    <img src="images/blog/blog-01.png" alt="post-image">
-                    <div class="mask"></div>
-                    <a href="blog-single.html"></a>
+                <h2 class="section-title"><span><i class="icon-guest"></i>INTRO</span></h2>
+                
+                <!-- intro -->
+                <div class="intro">
+            
+                    <h2>
+                        
+                        <span class="center">Hej. Välkommen till min</span> 
+                    
+                        <span class="rotate-words">
+                            <span>hemsida.</span>
+                            <span>blogg.</span>
+                            <span>resume.</span>
+                        </span>
+                    
+                    </h2>
+
+                         
+
+                    <h2 class="left-align">   
+                        Här hittar du mitt <a href="#/resume">cv (resume)</a>, <a href="#/blog">blogg</a> och alla mina <a href="#/portfolio">projekt</a> jag jobbar på. 
+                    </h2>
+
+                        
+
+                    <h2 class="left-align">
+                        Jag kommer från Linköping och har de senaste åren pluggat <a href="http://www.liu.se/utbildning/program/innovativprog?l=sv">Innovativ programmering</a> på Linköpings universitet.
+                        Jag är nu i slutet av min utbildning och är riktigt sugen på att ta klivit in i arbetslivet.
+                    </h2>
+                    
+                      
                 </div>
+                <!-- intro -->
                 
-                <header class="media-cell-desc">
-                    <span title="2013" class="date"><span class="day">18</span>oct</span>
-                    <h3><a href="blog-single.html">20 Best Practices For Designing Better UIs</a></h3>
-                </header>
                 
-            </article>
-            <!-- post -->
+            </div>
+            <!-- column 8/12 -->
             
             
-            <!-- post -->
-            <article class="hentry media-cell">
-                
-                <div class="media-box">
-                    <img src="images/blog/blog-07.png" alt="post-image">
-                    <div class="mask"></div>
-                    <a href="blog-single.html"></a>
-                </div>
-                
-                <header class="media-cell-desc">
-                    <span title="2013" class="date"><span class="day">11</span>oct</span>
-                    <h3><a href="blog-single.html">40 Inspirational Magazine Designs That You Should See</a></h3>
-                </header>
-                
-            </article>
-            <!-- post -->
+            <!-- column 4/12 -->
+            <div class="col-md-4">
+
+                <h2 class="section-title"><span><i class="icon-guest"></i>KONTAKT</span></h2>
             
-            
-            <!-- post -->
-            <article class="hentry media-cell">
+                <!-- LETTER -->
+                <div class="letter">
+                    
+                    <h4 class="letter-title">Jonathan Doherty</h4>
+                    
+                    <div class="stamp">
+                      <img src="{% static 'images/site/stamp-image.png' %}" alt="stamp">
+                    </div>
+                  
+                    <div class="letter-info">
+                        <p><i class="icon-at"></i>jonatan.doherty.work@gmail.com</p>
+                        <p><i class="icon-phone"></i>076 777 41 64</p>
+                        <p><i class="icon-location"></i>Linköping, Sverige</p>
+                    </div>
+                    
+                </div>    
+                <!-- LETTER -->
                 
-                <div class="media-box">
-                    <img src="images/blog/blog-03.png" alt="post-image">
-                    <div class="mask"></div>
-                    <a href="blog-single.html"></a>
-                </div>
-                
-                <header class="media-cell-desc">
-                    <span title="2013" class="date"><span class="day">27</span>sep</span>
-                    <h3><a href="blog-single.html">Creating a New Typeface For Your Next Project</a></h3>
-                </header>
-                                                
-            </article>
-            <!-- post -->
-            
-            
-            <!-- post -->
-            <article class="hentry media-cell">
-            
-                <div class="media-box">
-                    <img src="images/blog/blog-04.png" alt="post-image">
-                    <div class="mask"></div>
-                    <a href="blog-single.html"></a>
-                </div>
-                
-                <header class="media-cell-desc">
-                    <span title="2013" class="date"><span class="day">14</span>jun</span>
-                    <h3><a href="blog-single.html">Sketching a Monster Made by Stone From Scratch</a></h3>
-                </header>
-                
-            </article>
-            <!-- post -->
-            
-            
-            <!-- post -->
-            <article class="hentry media-cell">
-                
-                <div class="media-box">
-                    <img src="images/blog/blog-05.png" alt="post-image">
-                    <div class="mask"></div>
-                    <a href="blog-single.html"></a>
-                </div>
-                
-                <header class="media-cell-desc">
-                    <span title="2013" class="date"><span class="day">05</span>jun</span>
-                    <h3><a href="blog-single.html">Designing a Physics Based iOS Game From Scratch</a></h3>
-                </header>
-                
-            </article>
-            <!-- post -->
-            
-            
-            <!-- post -->
-            <article class="hentry media-cell">
-                
-                <div class="media-box">
-                    <img src="images/blog/blog-06.png" alt="post-image">
-                    <div class="mask"></div>
-                    <a href="blog-single.html"></a>
-                </div>
-                
-                <header class="media-cell-desc">
-                    <span title="2013" class="date"><span class="day">03</span>may</span>
-                    <h3><a href="blog-single.html">Get Ready And Pack Your Bag For a Real Trip</a></h3>
-                </header>
-                
-            </article>
-            <!-- post -->
-            
-            
-            <!-- post -->
-            <article class="hentry media-cell">
-                
-                <div class="media-box">
-                    <img src="images/blog/blog-02.png" alt="post-image">
-                    <div class="mask"></div>
-                    <a href="blog-single.html"></a>
-                </div>
-                
-                <header class="media-cell-desc">
-                    <span title="2013" class="date"><span class="day">03</span>may</span>
-                    <h3><a href="blog-single.html">Get Ready And Pack Your Bag For a Real Trip</a></h3>
-                </header>
-                
-            </article>
-            <!-- post -->
-            
-            
-            <!-- post -->
-            <article class="hentry media-cell">
-                
-                <div class="media-box">
-                    <img src="images/blog/blog-08.png" alt="post-image">
-                    <div class="mask"></div>
-                    <a href="blog-single.html"></a>
-                </div>
-                
-                <header class="media-cell-desc">
-                    <span title="2013" class="date"><span class="day">03</span>may</span>
-                    <h3><a href="blog-single.html">Get Ready And Pack Your Bag For a Real Trip</a></h3>
-                </header>
-                
-            </article>
-            <!-- post -->
+            </div>
+            <!-- column 4/12 -->
             
             
         </div>
-        <!-- LATEST POSTS -->          
-             
-                     
-        <p class="launch"><a class="button primary" href="blog.html">SEE ALL POSTS</a></p>
-             
-               
+        <!-- row -->
+        
+        
+        
+        <h2 class="section-title"><span class="superlambobros-icon"><img src="{% static 'images/about/avatar.png' %}" alt="portfolio-post"></span></h2>
+                    
+        <!-- SERVICES -->
+        <div class="row">
+            
+
+            <!-- column 8/12 -->
+            <div class="col-md-8">
+
+                <!-- intro -->
+                <div class="intro">
+
+                    <h2 class="left-align">
+                        Utöver skolan älskar jag att träna och lirar just nu fotboll i Linköpings bästa (korp) lag <strong>Super Lambo Bros</strong>.
+                    </h2>
+
+                </div>
+
+            </div>
+            <!-- column 8/12 -->
+            
+            <!-- column 4/12 -->
+            <div class="col-md-4">
+
+                <div class="media-box image">
+                    <img src="{% static 'images/about/superlambobros2.jpg' %}" alt="portfolio-post">
+                    <div class="mask">
+                    
+                        <!-- lightbox - image --> 
+                        <a href="{% static 'images/about/superlambobros2.jpg' %}" title="Super Lambo Bros" data-lightbox-gallery="fancybox-item-01" class="lightbox" rel="fancybox-item-01"></a>
+                        <!-- lightbox - image -->
+                        
+                    </div>
+                </div>
+                
+            </div>
+            <!-- column 4/12 -->
+
+            
+        </div>
+        <!-- SERVICES -->
+       
         
     </div>
 </section>
-<!-- PAGE : BLOG -->
+<!-- PAGE : ABOUT -->
+
+
+<!-- PAGE : PORTFOLIO -->
+<section id="portfolio" class="portfolio page">
+    <div class="content">
+    
+                     
+        <h2 class="section-title center"><span><i class="icon-leaf"></i>MY WORKS</span></h2>
+        
+        <!--FILTERS-->
+        <ul id="filters" class="filters">
+          <li class="current"><a href="#" data-filter="*">ALLA</a></li>
+          <li><a href="#" data-filter=".design">KODNING</a></li>
+          <li><a href="#" data-filter=".coding">EXJOBB</a></li>
+          <li><a href="#" data-filter=".logo">LOGO</a></li>
+          <li><a href="#" data-filter=".school">SKOLA</a></li>
+        </ul>
+        <!--FILTERS-->
+    
+    
+        <!-- PORTFOLIO -->
+        <div class="portfolio-items media-grid" data-layout="masonry">
+          
+          
+          <!-- portfolio-item -->  
+          <div class="media-cell design hentry">
+            
+            <div class="media-box">
+                <img src="{% static 'images/portfolio/01.png' %}" alt="portfolio-post">
+                <div class="mask"></div>
+                <a href="one" class="ajax"></a>
+            </div>
+            
+            <div class="media-cell-desc">
+                <h3>Hemsida 1</h3>
+                <p class="category">an illustration work</p>
+                <h4>TEKNIKER</h4>
+                <ul class="tags">
+                    <li><a>Django</a></li>
+                    <li><a>Bootstrap</a></li>
+                    <li><a>Mezzanine</a></li>
+                    <li><a>Heroku</a></li>
+                </ul>
+            </div>
+            
+          </div>
+          <!-- portfolio-item --> 
+          
+          
+          <!-- portfolio-item -->  
+          <div class="media-cell coding hentry">
+          
+            <div class="media-box">
+                <img src="{% static 'images/portfolio/02.png' %}" alt="portfolio-post">
+                <div class="mask"></div>
+                <a href="two" class="ajax"></a>
+            </div>
+            
+            <div class="media-cell-desc">
+                <h3>Hemsida 2</h3>
+                <p class="category">an illustration work</p>
+                <h4>TEKNIKER</h4>
+                <ul class="tags">
+                    <li><a>Django</a></li>
+                    <li><a>Bootstrap</a></li>
+                    <li><a>Mezzanine</a></li>
+                    <li><a>Heroku</a></li>
+                </ul>
+            </div>
+            
+          </div>
+          <!-- portfolio-item --> 
+
+          
+           <!-- portfolio-item -->  
+          <div class="media-cell logo hentry">
+            <div class="media-box">
+                <img src="{% static 'images/portfolio/04.png' %}" alt="portfolio-post">
+                <div class="mask">
+                    <a href="three" class="ajax"></a>
+                </div>
+            </div>
+            <div class="media-cell-desc">
+                <h3>Behind The Eyes</h3>
+                <p class="category">an illustration work</p>
+                <h4>TEKNIKER</h4>
+                <ul class="tags">
+                    <li><a>Django</a></li>
+                    <li><a>Bootstrap</a></li>
+                    <li><a>Mezzanine</a></li>
+                    <li><a>Heroku</a></li>
+                    <li><a>Semestervikariet</a></li>
+                    <li><a>Barista</a></li>
+                    <li><a>Erfarenhet av programmeringspråk</a></li>
+                    <li><a>Operativ system</a></li>
+                    <li><a>Samma årtal på labbassistent</a></li>
+                    <li><a>Lite kortare exjobb del eventuellt</a></li>
+                    <li><a>Lite kortare exjobb del eventuellt</a></li>
+                </ul>
+            </div>
+          </div>
+          <!-- portfolio-item -->                         
+          
+
+        </div>
+        <!-- PORTFOLIO -->
+
+
+    
+    </div>
+    <!-- CONTENT -->
+    
+</section>
+<!-- PAGE : PORTFOLIO -->   
+
+
+<!-- PAGE : RESUME -->
+<section id="resume" class="page">
+    <div class="content">
+        <!-- CONTENT -->
+                       
+                        
+        <!-- row -->
+        <div class="row">
+        
+            
+            <!-- col 6/12 -->
+            <div class="col-md-6">
+                          
+                <!-- timeline -->
+                <div class="timeline">
+                
+                    <h2><i class="fa fa-flask"></i>ARBETSLIVSERFARENHET</h2>
+                    
+                    <div class="event current">
+                        <span class="date">2014</span>
+                        <h4>Exjobb</h4>
+                        <h5>NILSSONS MC SHOP</h5>
+                        <p>Fick i uppdrag att skapa ett system från grunden som digitaliserar och automatiserar allt pappersarbete för en motorcykelverkstad och på så sätt eliminerar all onödig arbetstid som går åt till att leta fram, ta kopior och arkivera papper dagligen. Resultet blev ett webbaserat system som kan användas genom dator, surfplatta och mobila enheter. Med funktionalitet för att söka, lägga till, ta bort, modifiera, skriva ut och hitta kunder, motorcyklar, serviceprotokoll och arbetsordrar där moms, kostnader och priser beräknas automatiskt.</p>
+                    </div>
+                    
+                    
+                    <div class="event">
+                        <span class="date">2013</span>
+                        <h4>Amanuens</h4>
+                        <h5>Linköping Universitet</h5>
+                        <p>Fick i uppdrag att lösa och genomföra hur man kunde ersätta nuvarande frågebatteri för en kurs som sköttes av en tredjepart mot ett eget frågebatteri som helst kunde integreras med linköpings universits nya system LISAM.</p>
+
+                        <br>
+
+                        <h4>Labbassistent</h4>
+                        <h5>Linköping Universitet</h5>
+                        <p>Var labbassistent igen för kursen jag skapade förra året och skötte administrationen och rättningen av det nya frågebatteriet. Samma arbetsuppgifter som tidigare år.</p>
+                    </div>
+                    
+                    <div class="event">
+                        <span class="date">2012</span>
+                        <h4>Tekniker</h4>
+                        <h5>Linköping Universitet</h5>
+                        <p>Fick i uppdrag att skapa en kurs där studenter skulle lära sig att programmera legomindstorm robotar med hjälp av python. Arbetsuppgifterna bestod av att skapa utmaningar att lösa i stigande svårighetsgrader. Skriva användar och instruktions manualer. Hitta ett sätt att programmera robotarna med python och se till att installationen av program varan fungerade på windows, mac och linux.</p>
+
+                        <br>
+
+                        <h4>Labbassistent</h4>
+                        <h5>Linköping Universitet</h5>
+                        <p>Hanterade rättningar för ett frågebatteri och var labbassistent för kursen jag skapade. Arbetsuppgifterna bestod av att hjälpa och vägleda studenterna om problem uppstod samt betygsätta dem och rätta fråger/delprov varje vecka.</p>
+                    </div>
+               
+               </div>
+               <!-- timeline -->
+               
+               
+               <!-- timeline -->
+               <div class="timeline">
+                
+                    <h2><i class="icon-college"></i>UTBILDNING</h2>
+                    
+                    <div class="event">
+                        <span class="date">2013</span>
+                        <h4>Kandidatexamen, Innovativ Programmering</h4>
+                        <h5>Linköping Universitet</h5>
+                 
+                    </div>
+                    
+                    
+                    <div class="event">
+                        <span class="date">2007</span>
+                        <h4>Samhällsvetenskaplig linje med ekonomisk inriktning</h4>
+                        <h5>Katedralskolan</h5>
+                        
+                    </div>
+               
+               </div>
+               <!-- timeline -->
+               
+              
+              </div> 
+              <!-- col 6/12 -->
+               
+               
+               
+               <!-- col 6/12 -->
+               <div class="col-md-6">
+                
+                    
+                    
+                    
+                    <!-- LETTER -->
+                    <div class="letter">
+                        
+                        <h4 class="letter-title">Jonathan Doherty</h4>
+                        
+                        <div class="stamp">
+                          <img src="{% static 'images/site/stamp-image.png' %}" alt="stamp">
+                        </div>
+                      
+                        <div class="letter-info">
+                            <p><i class="icon-at"></i>jonatan.doherty.work@gmail.com</p>
+                            <p><i class="icon-phone"></i>076 777 41 64</p>
+                            <p><i class="icon-location"></i>Linköping, Sverige</p>
+                        </div>
+                        
+                    </div>    
+                    <!-- LETTER -->
+                               
+
+                    <h2 class="section-title"><span><i class="icon-doc-alt"></i>LADDA NER CV</span></h2>
+                    
+                    <p>Ladda gärna ner mitt CV i pdf format. Jag söker just nu jobb och brinner för python och django.</p>
+                    
+                    <!-- DOWNLOAD BUTTON -->
+                    <div class="download-button">
+                        <a href="#" class="button primary">LADDA NER CV</a>
+                    </div>
+                    <!-- DOWNLOAD BUTTON -->
+                    
+                    
+                    <h2 class="section-title"><span><i class="icon-linkedin"></i>KOLLA IN MIN LINKEDIN PROFIL</span></h2>
+                    
+                    <p>Jag finns även på linkedin.</p>
+                    
+                    <!-- DOWNLOAD BUTTON -->
+                    <div class="download-button">
+                        <a href="#" class="button primary">LINKEDIN PROFIL</a>
+                    </div>
+                    <!-- DOWNLOAD BUTTON -->
+
+                    <h2 class="section-title"><span><i class="icon-github-circled"></i>KOLLA IN MIN GITHUB</span></h2>
+                    
+                    <p>Mina hemliga projekt.</p>
+                    
+                    <!-- DOWNLOAD BUTTON -->
+                    <div class="download-button">
+                        <a href="#" class="button button-icon big blue colored"><i class="fa fa-github"></i>GITHUB</a>
+                    </div>
+                    <a href="#" class="button button-icon big red colored"><i class="fa fa-github"></i>GITHUB</a>
+
+                    <!-- DOWNLOAD BUTTON -->       
+                
+               </div>
+               <!-- col 6/12 -->
+        
+        
+        </div>                       
+        <!-- row -->                   
+                            
+                           
+                            
+                        
+    </div>
+    <!-- CONTENT -->
+    
+</section>
+<!-- PAGE : RESUME -->                
+                
+
              
 {% endblock %}
 

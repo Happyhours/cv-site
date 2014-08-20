@@ -10,3 +10,31 @@
     min-width: 39px;
     min-height: 39px;
 }
+
+.vs-nav-custom i {
+    font-size: 17px;
+    display: inline-block;
+    width: 58px;
+    line-height: 55px;
+    text-align: center;
+    border-radius: 50%;
+    color: #6A7686;
+    border: 1px solid #C8D3D6;
+    background: #fff;
+    margin-top: 10%;
+}
+
+.vs-nav-custom a {
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    color: #fff;
+    letter-spacing: -3px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 2.7em;
+}
+
+.vs-nav-custom a:hover, .vs-nav-custom a:active {
+    color: #D0DADC;
+}
+

@@ -10,9 +10,83 @@
 {% trans "Page not found" %}
 {% endblock %}
 
+
+{% block one_page_layout %}
+    class="no-js single-page-layout"
+{% endblock %}
+
+{% block navigation_header %}
+<!-- HEADER -->
+<header class="header">
+
+    
+    <h1>Johnny Doe</h1>
+    <p>freelance graphic designer</p>
+    
+    <!-- NAV MENU -->
+    <ul class="vs-nav">
+        
+        <!-- InstanceBeginEditable name="Menu-Content" -->
+        
+            <li><a href="/"><i title="go to home" class="icon-home-1 tooltip" data-tooltip-pos="right"></i></a></li>
+            
+        <!-- InstanceEndEditable -->
+        
+    </ul>
+    <!-- NAV MENU -->
+    
+    <!-- SEARCH --> 
+    <div class="header-search">
+        <form role="search" method="get" id="search-form" action="#">
+          <input type="text" value="" name="s" id="search" placeholder="ENTER KEYWORD">
+          <input type="submit" id="search-submit" title="Search" value="→">
+        </form>
+    </div>
+    <!-- SEARCH -->
+    
+</header>
+<!-- HEADER -->
+{% endblock %}
+
+
 {% block main %}
-<div class="panel panel-danger">
-	<div class="panel-heading"><h3 class="panel-title">{% trans "Page not found" %}</h3></div>
-	<div class="panel-body">{% trans "The page you requested does not exist." %}</div>
+<!-- .full-width-content -->
+<div class="full-width-content">
+
+    
+    <!-- .hentry -->
+    <article class="post hentry">
+        
+
+        <!-- .entry-content -->
+        <div class="entry-content">
+        
+            <!-- .row-fluid -->
+            <div class="row">
+                
+                <!-- col 12/12 -->
+                <div class="col-md-12">
+                    
+                    <!-- http-alert -->
+                    <div class="http-alert">
+                        <h1>404</h1>
+                        <p>{% trans "The page you are looking for was not found!" %}</p>
+                    </div>
+                    <!-- http-alert -->
+                
+                </div>
+                <!-- col 12/12 -->
+                
+            </div>
+            <!-- .row-fluid -->
+            
+            
+        </div>
+        <!-- .entry-content -->
+    
+    </article>
+    <!-- .hentry -->
+
 </div>
+<!-- .full-width-content -->
 {% endblock %}
