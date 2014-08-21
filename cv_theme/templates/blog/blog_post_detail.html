@@ -63,157 +63,168 @@
 
 {% block main %}
 
-<!-- .blog-single -->
-<div class="readable-content blog-single ">
+<div class="row">
+    <div class="col-md-8 col-md-offset-1">
 
-    <!-- .hentry -->
-    <article class="post type-post format-standard hentry">
+        <!-- .blog-single -->
+        <div class="readable-content blog-single ">
 
-
-        <!-- .entry-header -->
-        <header class="entry-header">
-
-            <h1 class="entry-title">{{ blog_post.title }}</h1>
-
-        </header>
-        <!-- .entry-header -->
+            <!-- .hentry -->
+            <article class="post type-post format-standard hentry">
 
 
-        <!-- .entry-meta -->
-        <div class="entry-meta">
+                <!-- .entry-header -->
+                <header class="entry-header">
 
-            {% block blog_post_detail_postedby %}
-            {% editable blog_post.publish_date %}
-            <span class="posted-by"> 
-                by
-                {% with blog_post.user as author %}
-                <a class="url fn n" href="{% url "blog_post_list_author" author %}" title="View all posts by {{ author.get_full_name|default:author.username }}" rel="author">{{ author.get_full_name|default:author.username }}</a>
-                {% endwith %}
-            </span>
+                    <h1 class="entry-title">{{ blog_post.title }}</h1>
 
-            <span class="posted-on">
-                on 
-                {% blocktrans with sometime=blog_post.publish_date|date:"P" %}
-                <a href="#" title="{{ sometime }}" rel="bookmark">
-                {% endblocktrans %}
-                    {% blocktrans with sometime=blog_post.publish_date|date %}
+                </header>
+                <!-- .entry-header -->
+
+
+                <!-- .entry-meta -->
+                <div class="entry-meta">
+
+                    {% block blog_post_detail_postedby %}
+                    {% editable blog_post.publish_date %}
+                    <span class="posted-by"> 
+                        by
+                        {% with blog_post.user as author %}
+                        <a class="url fn n" href="{% url "blog_post_list_author" author %}" title="View all posts by {{ author.get_full_name|default:author.username }}" rel="author">{{ author.get_full_name|default:author.username }}</a>
+                        {% endwith %}
+                    </span>
+
+                    <span class="posted-on">
+                        on 
+                        {% blocktrans with sometime=blog_post.publish_date|date:"P" %}
+                        <a href="#" title="{{ sometime }}" rel="bookmark">
+                        {% endblocktrans %}
+                            {% blocktrans with sometime=blog_post.publish_date|date %}
+                            
+                            {% endblocktrans %}
+
+                            {% blocktrans with sometime=blog_post.publish_date|date:"M d" %}
+                                {{ sometime }}
+
+                            {% endblocktrans %}
+                            ,
+                            {% blocktrans with sometime=blog_post.publish_date|date:"Y" %}
+                                {{ sometime }}
+                            {% endblocktrans %} 
+                        </a>
+                    </span>
+
+                    <!--<span class="posted-in">
+                        posted in 
+                        <a href="#" title="View all posts in Web Design">Web Design</a>
+                    </span>-->
+
+                    {% endeditable %}
+                    {% endblock %}
                     
-                    {% endblocktrans %}
+                    <!--<span class="edit-link">
+                        <a class="post-edit-link" href="#" title="Edit Post">Edit</a>
+                    </span>-->
+                    
+                </div>
+                <!-- .entry-meta -->
+         
 
-                    {% blocktrans with sometime=blog_post.publish_date|date:"M d" %}
-                        {{ sometime }}
+                {% block blog_post_detail_featured_image %}
+                {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
+                <!-- .featured-image --> 
+                <div class="featured-image">
+                    <img src="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 500 500 %}" alt="blog-image">
+                </div>
+                <!-- .featured-image --> 
+                {% endif %}
+                {% endblock %}
 
-                    {% endblocktrans %}
-                    ,
-                    {% blocktrans with sometime=blog_post.publish_date|date:"Y" %}
-                        {{ sometime }}
-                    {% endblocktrans %} 
-                </a>
-            </span>
 
-            <!--<span class="posted-in">
-                posted in 
-                <a href="#" title="View all posts in Web Design">Web Design</a>
-            </span>-->
 
-            {% endeditable %}
-            {% endblock %}
-            
-            <!--<span class="edit-link">
-                <a class="post-edit-link" href="#" title="Edit Post">Edit</a>
-            </span>-->
-            
+                {% block blog_post_detail_content %}
+                {% editable blog_post.content %}
+                <!-- .entry-content --> 
+                <div class="entry-content">         
+                    {{ blog_post.content|richtext_filters|safe }}
+                </div>
+                <!-- .entry-content -->
+                {% endeditable %}
+                {% endblock %}
+
+
+                {% block blog_post_detail_related_posts %}
+                {% if blog_post.related_posts.all %}
+                <!-- .related-posts -->
+                <div class="related-posts">
+                    <h3>{% trans 'RELATED POSTS' %}</h3>
+                    <ol>
+                    {% for post in blog_post.related_posts.all %}
+                        <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
+                    {% endfor %}
+                    </ol>
+                </div>
+                <!-- .related-posts --> 
+                {% endif %}
+                {% endblock %}
+
+
+             
+
+                {% block blog_post_detail_keywords %}
+                {% keywords_for blog_post as tags %}
+                {% if tags %}
+                {% spaceless %}
+                <!-- .entry-meta -->
+                <footer class="entry-meta">
+                    <h3>{% trans "TAGS" %}</h3>
+                    {% for tag in tags %}
+                    <a href="{% url "blog_post_list_tag" tag.slug %}" rel="tag">{{ tag }}</a>
+                    {% endfor %}
+                </footer>
+                <!-- .entry-meta -->   
+                {% endspaceless %}
+                {% endif %}
+                {% endblock %}
+
+            </article>
+            <!-- .hentry -->
+
+
+
+                {% block blog_post_previous_next %}
+                <!-- .nav-single -->
+                <nav class="nav-single row">
+                    {% with blog_post.get_previous_by_publish_date as previous %}
+                    {% if previous %}
+                    <div class="nav-previous col-sm-6">
+                        <h4>PREVIOUS POST</h4>
+                        <a href="{{ previous.get_absolute_url }}" rel="prev">&larr; {{ previous }}</a>
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+
+                    {% with blog_post.get_next_by_publish_date as next %}
+                    {% if next %}
+                    <div class="nav-next col-sm-6">
+                        <h4>NEXT POST</h4>
+                        <a href="{{ next.get_absolute_url }}" rel="next">{{ next }} &rarr;</a>
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+                </nav>
+                <!-- .nav-single --> 
+                {% endblock %}
+
         </div>
-        <!-- .entry-meta -->
- 
+        <!-- .blog-single -->
 
-        {% block blog_post_detail_featured_image %}
-        {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
-        <!-- .featured-image --> 
-        <div class="featured-image">
-            <img src="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 500 500 %}" alt="blog-image">
+    </div>
+    <div class="col-md-3">
+        <div class="custom-testo">
+        {% include "blog/includes/filter_panel.html" %}
         </div>
-        <!-- .featured-image --> 
-        {% endif %}
-        {% endblock %}
-
-
-
-        {% block blog_post_detail_content %}
-        {% editable blog_post.content %}
-        <!-- .entry-content --> 
-        <div class="entry-content">         
-            {{ blog_post.content|richtext_filters|safe }}
-        </div>
-        <!-- .entry-content -->
-        {% endeditable %}
-        {% endblock %}
-
-
-        {% block blog_post_detail_related_posts %}
-        {% if blog_post.related_posts.all %}
-        <!-- .related-posts -->
-        <div class="related-posts">
-            <h3>{% trans 'RELATED POSTS' %}</h3>
-            <ol>
-            {% for post in blog_post.related_posts.all %}
-                <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
-            {% endfor %}
-            </ol>
-        </div>
-        <!-- .related-posts --> 
-        {% endif %}
-        {% endblock %}
-
-
-     
-
-        {% block blog_post_detail_keywords %}
-        {% keywords_for blog_post as tags %}
-        {% if tags %}
-        {% spaceless %}
-        <!-- .entry-meta -->
-        <footer class="entry-meta">
-            <h3>{% trans "TAGS" %}</h3>
-            {% for tag in tags %}
-            <a href="{% url "blog_post_list_tag" tag.slug %}" rel="tag">{{ tag }}</a>
-            {% endfor %}
-        </footer>
-        <!-- .entry-meta -->   
-        {% endspaceless %}
-        {% endif %}
-        {% endblock %}
-
-    </article>
-    <!-- .hentry -->
-
-
-
-        {% block blog_post_previous_next %}
-        <!-- .nav-single -->
-        <nav class="nav-single row">
-            {% with blog_post.get_previous_by_publish_date as previous %}
-            {% if previous %}
-            <div class="nav-previous col-sm-6">
-                <h4>PREVIOUS POST</h4>
-                <a href="{{ previous.get_absolute_url }}" rel="prev">&larr; {{ previous }}</a>
-            </div>
-            {% endif %}
-            {% endwith %}
-
-            {% with blog_post.get_next_by_publish_date as next %}
-            {% if next %}
-            <div class="nav-next col-sm-6">
-                <h4>NEXT POST</h4>
-                <a href="{{ next.get_absolute_url }}" rel="next">{{ next }} &rarr;</a>
-            </div>
-            {% endif %}
-            {% endwith %}
-        </nav>
-        <!-- .nav-single --> 
-        {% endblock %}
-
+    </div>
 </div>
-<!-- .blog-single --> 
 
 {% endblock %}

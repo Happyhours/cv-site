@@ -104,91 +104,112 @@
 
 {% endif %}
 
+<div class="row">
+    <div class="col-md-8 col-md-offset-1">
 
-<div class="blog-posts readable-content">
+        <div class="blog-posts readable-content">
 
+            {% for blog_post in blog_posts.object_list %}
 
-{% for blog_post in blog_posts.object_list %}
+            <!-- .post -->                                      
+            <article class="post type-post hentry">
 
-<!-- .post -->                                      
-<article class="post type-post hentry">
-
-    {% block blog_post_list_post_title %}
-    {% editable blog_post.title %}
-    <!-- .entry-header -->
-    <header class="entry-header">
-        <h1 class="entry-title">
-            <a href="{{ blog_post.get_absolute_url }}" rel="bookmark">{{ blog_post.title }}</a>
-        </h1>
-    </header>
-    <!-- .entry-header -->
-    {% endeditable %}
-    {% endblock %}
-
-
-    {% block blog_post_list_post_metainfo %}
-    {% editable blog_post.publish_date %}
-    <!-- .entry-meta --> 
-    <footer class="entry-meta">
-        <span class="post-format"></span>
-        <span title="2013" class="entry-date">
-            <span class="day">{% blocktrans with sometime=blog_post.publish_date|date:"d" %}{{ sometime }}{% endblocktrans %}</span>
-            {% blocktrans with sometime=blog_post.publish_date|date:"M" %}{{ sometime }}{% endblocktrans %}
-        </span>
-        <!--<span class="entry-comment"><span class="count">3</span>comments</span>-->
-    </footer>
-    <!-- .entry-meta -->
-    {% endeditable %}
-    {% endblock %}
+                {% block blog_post_list_post_title %}
+                {% editable blog_post.title %}
+                <!-- .entry-header -->
+                <header class="entry-header">
+                    <h1 class="entry-title">
+                        <a href="{{ blog_post.get_absolute_url }}" rel="bookmark">{{ blog_post.title }}</a>
+                    </h1>
+                </header>
+                <!-- .entry-header -->
+                {% endeditable %}
+                {% endblock %}
 
 
-    {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
-    {% block blog_post_list_post_featured_image %}
-    <!-- .featured-image --> 
-    <div class="featured-image">
-        <a href="{{ blog_post.get_absolute_url }}">
-            <img src="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 500 500 %}" alt="blog-image">
-        </a>
+                {% block blog_post_list_post_metainfo %}
+                {% editable blog_post.publish_date %}
+                <!-- .entry-meta --> 
+                <footer class="entry-meta">
+                    <span class="post-format"></span>
+                    <span title="2013" class="entry-date">
+                        <span class="day">{% blocktrans with sometime=blog_post.publish_date|date:"d" %}{{ sometime }}{% endblocktrans %}</span>
+                        {% blocktrans with sometime=blog_post.publish_date|date:"M" %}{{ sometime }}{% endblocktrans %}
+                    </span>
+                    <!--<span class="entry-comment"><span class="count">3</span>comments</span>-->
+                </footer>
+                <!-- .entry-meta -->
+                {% endeditable %}
+                {% endblock %}
+
+
+                {% if settings.BLOG_USE_FEATURED_IMAGE and blog_post.featured_image %}
+                {% block blog_post_list_post_featured_image %}
+                <!-- .featured-image --> 
+                <div class="featured-image">
+                    <a href="{{ blog_post.get_absolute_url }}">
+                        <img src="{{ MEDIA_URL }}{% thumbnail blog_post.featured_image 500 500 %}" alt="blog-image">
+                    </a>
+                </div>
+                <!-- .featured-image --> 
+                {% endblock %}
+                {% endif %}
+
+
+
+
+                {% block blog_post_list_post_content %}
+                {% editable blog_post.content %}
+                <!-- .entry-content -->     
+                <div class="entry-content">
+                    <p>{{ blog_post.description_from_content|safe }}
+                        <a href="{{ blog_post.get_absolute_url }}" class="more-link">
+                            {% trans "read more" %} 
+                            <span class="meta-nav">→</span>
+                        </a>
+                    </p>
+                </div>
+                <!-- .entry-content -->
+                {% endeditable %}
+                {% endblock %}
+
+            </article>
+            <!-- .post -->  
+
+            {% endfor %}
+
+
+
+            {% pagination_for blog_posts %}
+
+            {% if settings.COMMENTS_DISQUS_SHORTNAME %}
+            {% include "generic/includes/disqus_counts.html" %}
+            {% endif %}
+
+            
+
+        </div>
+        <!-- .blog-posts -->
+
     </div>
-    <!-- .featured-image --> 
-    {% endblock %}
-    {% endif %}
-
-
-
-
-    {% block blog_post_list_post_content %}
-    {% editable blog_post.content %}
-    <!-- .entry-content -->     
-    <div class="entry-content">
-        <p>{{ blog_post.description_from_content|safe }}
-            <a href="{{ blog_post.get_absolute_url }}" class="more-link">
-                {% trans "read more" %} 
-                <span class="meta-nav">→</span>
-            </a>
-        </p>
+    <div class="col-md-3">
+        <div class="custom-testo">
+        {% include "blog/includes/filter_panel.html" %}
+        </div>
     </div>
-    <!-- .entry-content -->
-    {% endeditable %}
-    {% endblock %}
-
-</article>
-<!-- .post -->  
-
-{% endfor %}
+</div>
 
 
 
-{% pagination_for blog_posts %}
 
-{% if settings.COMMENTS_DISQUS_SHORTNAME %}
-{% include "generic/includes/disqus_counts.html" %}
-{% endif %}
+
+
 
 {% endblock %}
 
-</div>
-<!-- .blog-posts -->
+
+
+
 
 {% block right_panel %}
 {% include "blog/includes/filter_panel.html" %}
