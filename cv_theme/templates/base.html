@@ -33,6 +33,10 @@
         <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Tangerine:400,700' rel='stylesheet' type='text/css'>
 
+        <link href='http://fonts.googleapis.com/css?family=Shadows+Into+Light:400,700' rel='stylesheet' type='text/css'>
+
+        
+
 
         {% ifinstalled mezzanine.blog %}
         <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
@@ -103,33 +107,45 @@
             <!-- HEADER -->
             <header class="header">
 
-                <div class="row">
-                    <div class="col-md-3 col-md-offset-8">
-                        <div class="col-md-6 vs-nav-custom">
-                            <a href="/blog">Blog</a>
-                        </div>
-                        <div class="col-md-6 vs-nav-custom">
-                            <i title="search" class="search-link fa fa-search tooltip" data-tooltip-pos="right"></i>
+                <div class="row" >
+
+                    <div class="col-md-12">
+                        <div class="row">
+
+                            <div class="col-md-8">
+
+                                <div class="custom-title">
+                                    <h1>Jonathan Doherty</h1> 
+                                    <!--<p>Programmering, Träning</p>-->
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-4" >
+
+                                <div class="col-md-6 vs-nav-custom">
+                                    <a href="/blog">Blog</a>
+                                </div>
+                                <div class="col-md-4 vs-nav-custom">
+                                    <i title="search" class="search-link fa fa-search tooltip" data-tooltip-pos="right"></i>
+                                </div>
+
+                                <!-- SEARCH --> 
+                                <div class="header-search col-md-12">
+
+                                    {% search_form "all" %}
+
+                                </div>
+                                <!-- SEARCH -->
+
+                            </div>
+
                         </div>
                     </div>
+
                 </div>
 
-                <div class="row">
-                    <!-- SEARCH --> 
-                    <div class="header-search col-md-3 col-md-offset-8">
-
-                        {% search_form "all" %}
-
-                    </div>
-                    <!-- SEARCH -->
-                </div>
-
-
-                <!--<img src="{% static "images/site/avatar.png" %}" alt="avatar">-->
-                <h1>Jonathan Doherty</h1>
-                <p>Python, Django, Heroku</p>
-
-                
+ 
                 <!-- NAV MENU -->
                 <!--  page_menu % "pages/menus/dropdown.html" % -->
                 <ul class="vs-nav">

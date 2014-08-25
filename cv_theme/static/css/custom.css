@@ -21,7 +21,7 @@
     color: #6A7686;
     border: 1px solid #C8D3D6;
     background: #fff;
-    margin-top: 10%;
+    margin-top: 6px;
 }
 
 .vs-nav-custom a {
@@ -48,5 +48,34 @@
     margin: 60px 16px 40px 0;
     background: #EFF4F5;
     border-radius: 6px;
+}
 
+.custom-title h1 {
+    font-family: Shadows Into Light, Arial, serif;
+    font-size: 6.0em;
+    margin: 0px;
+    margin-top: 0.40em;
+}
+
+
+@media screen and (max-width: 991px) { 
+    .vs-nav-custom a {
+        font-size: 2.4em
+    }
+    .custom-title h1 {
+        font-size: 4.0em
+    }
+}
+
+/* SMARTPHONES */
+@media screen and (max-width: 767px) { 
+    .vs-nav-custom a {
+        width: auto;
+        font-size: 130%;
+        letter-spacing: -1px;
+        color: #333;
+    }
+    .custom-title h1 {
+        font-size: 3.0em
+    }
 }
