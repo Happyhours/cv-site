@@ -36,6 +36,7 @@ urlpatterns += patterns('',
     url("^one", direct_to_template, {"template": "one.html"}, name="one"),
     url("^two", direct_to_template, {"template": "two.html"}, name="two"),
     url("^three", direct_to_template, {"template": "three.html"}, name="three"),
+    url("^four", direct_to_template, {"template": "four.html"}, name="four"),
 
     # HOMEPAGE AS AN EDITABLE PAGE IN THE PAGE TREE
     # ---------------------------------------------

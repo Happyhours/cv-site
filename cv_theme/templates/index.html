@@ -61,18 +61,14 @@
 
                 <h2 class="section-title"><span><i class="icon-guest"></i>KONTAKT</span></h2>
             
+
+
                 <!-- LETTER -->
-                <div class="letter">
-                    
-                    <h4 class="letter-title">Jonathan Doherty</h4>
-                    
-                    <div class="stamp">
-                      <img src="{% static 'images/site/stamp-image.png' %}" alt="stamp">
-                    </div>
-                  
+                <div class="letter">   
+
                     <div class="letter-info">
-                        <p><i class="icon-at"></i>jonatan.doherty.work@gmail.com</p>
-                        <p><i class="icon-phone"></i>076 777 41 64</p>
+                        <p><i class="icon-at"></i>jonathan.doherty.work@gmail.com</p>
+                        <p><i class="icon-phone"></i>Inkluderad i <a href="#/resume">CV</a></p>
                         <p><i class="icon-location"></i>Linköping, Sverige</p>
                     </div>
                     
@@ -141,15 +137,14 @@
     <div class="content">
     
                      
-        <h2 class="section-title center"><span><i class="icon-leaf"></i>MY WORKS</span></h2>
+        <h2 class="section-title center"><span><i class="icon-leaf"></i>PROJEKT</span></h2>
         
         <!--FILTERS-->
         <ul id="filters" class="filters">
           <li class="current"><a href="#" data-filter="*">ALLA</a></li>
-          <li><a href="#" data-filter=".design">KODNING</a></li>
-          <li><a href="#" data-filter=".coding">EXJOBB</a></li>
-          <li><a href="#" data-filter=".logo">LOGO</a></li>
-          <li><a href="#" data-filter=".school">SKOLA</a></li>
+          <li><a href="#" data-filter=".projekt">PROJEKT</a></li>
+          <li><a href="#" data-filter=".exjobb">EXJOBB</a></li>
+          <li><a href="#" data-filter=".hemsida">HEMSIDOR</a></li>
         </ul>
         <!--FILTERS-->
     
@@ -159,84 +154,68 @@
           
           
           <!-- portfolio-item -->  
-          <div class="media-cell design hentry">
+          <div class="media-cell hemsida hentry">
             
             <div class="media-box">
-                <img src="{% static 'images/portfolio/01.png' %}" alt="portfolio-post">
+                <img src="{% static 'images/portfolio/single/nmcs.png' %}" alt="portfolio-post">
                 <div class="mask"></div>
                 <a href="one" class="ajax"></a>
             </div>
             
             <div class="media-cell-desc">
-                <h3>Hemsida 1</h3>
-                <p class="category">an illustration work</p>
-                <h4>TEKNIKER</h4>
-                <ul class="tags">
-                    <li><a>Django</a></li>
-                    <li><a>Bootstrap</a></li>
-                    <li><a>Mezzanine</a></li>
-                    <li><a>Heroku</a></li>
-                </ul>
+                <h3>Nilssons MC Shop</h3>
+                <p class="category">Hemsida</p>
             </div>
             
           </div>
           <!-- portfolio-item --> 
           
-          
           <!-- portfolio-item -->  
-          <div class="media-cell coding hentry">
+          <div class="media-cell hemsida hentry">
           
             <div class="media-box">
-                <img src="{% static 'images/portfolio/02.png' %}" alt="portfolio-post">
+                <img src="{% static 'images/portfolio/single/siam.png' %}" alt="portfolio-post">
                 <div class="mask"></div>
                 <a href="two" class="ajax"></a>
             </div>
             
             <div class="media-cell-desc">
-                <h3>Hemsida 2</h3>
-                <p class="category">an illustration work</p>
-                <h4>TEKNIKER</h4>
-                <ul class="tags">
-                    <li><a>Django</a></li>
-                    <li><a>Bootstrap</a></li>
-                    <li><a>Mezzanine</a></li>
-                    <li><a>Heroku</a></li>
-                </ul>
+                <h3>Siam Massage & Hälsospa</h3>
+                <p class="category">Hemsida</p>
             </div>
             
           </div>
           <!-- portfolio-item --> 
 
-          
-           <!-- portfolio-item -->  
-          <div class="media-cell logo hentry">
+          <!-- portfolio-item -->  
+          <div class="media-cell exjobb hentry">
             <div class="media-box">
-                <img src="{% static 'images/portfolio/04.png' %}" alt="portfolio-post">
+                <img src="{% static 'images/portfolio/single/xjobb.png' %}" alt="portfolio-post">
                 <div class="mask">
                     <a href="three" class="ajax"></a>
                 </div>
             </div>
             <div class="media-cell-desc">
-                <h3>Behind The Eyes</h3>
-                <p class="category">an illustration work</p>
-                <h4>TEKNIKER</h4>
-                <ul class="tags">
-                    <li><a>Django</a></li>
-                    <li><a>Bootstrap</a></li>
-                    <li><a>Mezzanine</a></li>
-                    <li><a>Heroku</a></li>
-                    <li><a>Semestervikariet</a></li>
-                    <li><a>Barista</a></li>
-                    <li><a>Erfarenhet av programmeringspråk</a></li>
-                    <li><a>Operativ system</a></li>
-                    <li><a>Samma årtal på labbassistent</a></li>
-                    <li><a>Lite kortare exjobb del eventuellt</a></li>
-                    <li><a>Lite kortare exjobb del eventuellt</a></li>
-                </ul>
+                <h3>Exjobb</h3>
+                <p class="category">Webbapplikation</p>
             </div>
           </div>
           <!-- portfolio-item -->                         
-          
+
+          <!-- portfolio-item -->  
+          <div class="media-cell projekt hentry">
+            <div class="media-box">
+                <img src="{% static 'images/portfolio/single/projekt.png' %}" alt="portfolio-post">
+                <div class="mask">
+                    <a href="four" class="ajax"></a>
+                </div>
+            </div>
+            <div class="media-cell-desc">
+                <h3>Linköpings universitet</h3>
+                <p class="category">Projekt</p>
+            </div>
+          </div>
+          <!-- portfolio-item -->            
 
         </div>
         <!-- PORTFOLIO -->
@@ -270,36 +249,45 @@
                     
                     <div class="event current">
                         <span class="date">2014</span>
+
+                        <h4>Konsult</h4>
+                        <h5>Linköping</h5>
+                        <p>Arbetar med att utveckla hemsidor med hjälp av Django, Mezzanine och hostingplattformen Heroku.</p>
+
+                        <br>
+
                         <h4>Exjobb</h4>
                         <h5>NILSSONS MC SHOP</h5>
-                        <p>Fick i uppdrag att skapa ett system från grunden som digitaliserar och automatiserar allt pappersarbete för en motorcykelverkstad och på så sätt eliminerar all onödig arbetstid som går åt till att leta fram, ta kopior och arkivera papper dagligen. Resultet blev ett webbaserat system som kan användas genom dator, surfplatta och mobila enheter. Med funktionalitet för att söka, lägga till, ta bort, modifiera, skriva ut och hitta kunder, motorcyklar, serviceprotokoll och arbetsordrar där moms, kostnader och priser beräknas automatiskt.</p>
+                        <p>Syftet med exjobbet var att skapa ett system som digitaliserar och automatiserar pappersarbetet för en motorcykelverkstad och på så sätt eliminerar all onödig arbetstid som går åt till att leta fram, ta kopior och arkivera papper dagligen. Resultet blev ett webbaserat system som kan användas genom dator, surfplatta och mobila enheter.</p>
+
                     </div>
                     
                     
                     <div class="event">
                         <span class="date">2013</span>
-                        <h4>Amanuens</h4>
+                        <h4>Labbassistent</h4>
                         <h5>Linköping Universitet</h5>
-                        <p>Fick i uppdrag att lösa och genomföra hur man kunde ersätta nuvarande frågebatteri för en kurs som sköttes av en tredjepart mot ett eget frågebatteri som helst kunde integreras med linköpings universits nya system LISAM.</p>
+                        <p>Skötte administration och rättning av det nya frågebatteriet jag skapade under 2013 och var labbassistent för kursen TDDD63 som jag skapade som Tekniker 2012. Arbetsuppgifterna bestod av att hjälpa och vägleda studenterna om problem uppstod samt rätta frågor/delprov varje vecka och betygsätta dem.</p>
 
                         <br>
 
-                        <h4>Labbassistent</h4>
+                        <h4>Amanuens</h4>
                         <h5>Linköping Universitet</h5>
-                        <p>Var labbassistent igen för kursen jag skapade förra året och skötte administrationen och rättningen av det nya frågebatteriet. Samma arbetsuppgifter som tidigare år.</p>
+                        <p>Fick i uppdrag att lösa och genomföra hur man kunde ersätta nuvarande frågebatteri för TDDD63 som sköttes av en tredje part med ett eget frågebatteri som helst kunde integreras med Linköpings universitets nya system LISAM.</p>
                     </div>
                     
                     <div class="event">
                         <span class="date">2012</span>
-                        <h4>Tekniker</h4>
+                        <h4>Labbassistent</h4>
                         <h5>Linköping Universitet</h5>
-                        <p>Fick i uppdrag att skapa en kurs där studenter skulle lära sig att programmera legomindstorm robotar med hjälp av python. Arbetsuppgifterna bestod av att skapa utmaningar att lösa i stigande svårighetsgrader. Skriva användar och instruktions manualer. Hitta ett sätt att programmera robotarna med python och se till att installationen av program varan fungerade på windows, mac och linux.</p>
+                        <p>Hanterade rättningar för ett frågebatteri och var labbassistent för kursen TDDD63 som jag skapade som Tekniker 2012. Arbetsuppgifterna bestod av att hjälpa och vägleda studenterna om problem uppstod samt rätta frågor/delprov varje vecka och betygsätta dem.</p>
 
                         <br>
 
-                        <h4>Labbassistent</h4>
+                        <h4>Tekniker</h4>
                         <h5>Linköping Universitet</h5>
-                        <p>Hanterade rättningar för ett frågebatteri och var labbassistent för kursen jag skapade. Arbetsuppgifterna bestod av att hjälpa och vägleda studenterna om problem uppstod samt betygsätta dem och rätta fråger/delprov varje vecka.</p>
+                        <p>Fick i uppdrag att skapa ett delprojekt för kursen TDDD63 där studenter skulle lära sig att programmera legomindstorm robotar med hjälp av Python. Arbetsuppgifterna bestod av att skapa utmaningar att lösa i stigande svårighetsgrader och skriva användar- och instruktionsmanualer. Samt hitta en lösning på hur robotarna kunde programmeras genom Python och se till att allt var multiplattform.</p>
+ 
                     </div>
                
                </div>
@@ -314,55 +302,39 @@
                     <div class="event">
                         <span class="date">2014</span>
                         <h4>Kandidatexamen, Innovativ Programmering</h4>
-                        <h5>Linköping Universitet</h5>
-                 
+                        <h5>Linköpings universitet</h5>
+                        <p></p>
                     </div>
-                    
+
+                    <div class="event">
+                        <span class="date">2009</span>
+                        <h4>Fristående kurser, Kognitionsvetenskap</h4>
+                        <h5>Linköpings universitet</h5>
+                        <p></p>
+                    </div>                    
                     
                     <div class="event">
                         <span class="date">2007</span>
                         <h4>Samhällsvetenskaplig linje med ekonomisk inriktning</h4>
-                        <h5>Katedralskolan</h5>
-                        
+                        <h5>Katedralskolan, Linköping</h5>
+                        <p></p>
                     </div>
                
                </div>
                <!-- timeline -->
                
               
-              </div> 
-              <!-- col 6/12 -->
+            </div> 
+            <!-- col 6/12 -->
                
                
                
-               <!-- col 6/12 -->
-               <div class="col-md-6">
-                
+                <!-- col 6/12 -->
+                <div class="col-md-6">
                     
-                    
-                    
-                    <!-- LETTER -->
-                    <div class="letter">
-                        
-                        <h4 class="letter-title">Jonathan Doherty</h4>
-                        
-                        <div class="stamp">
-                          <img src="{% static 'images/site/stamp-image.png' %}" alt="stamp">
-                        </div>
-                      
-                        <div class="letter-info">
-                            <p><i class="icon-at"></i>jonatan.doherty.work@gmail.com</p>
-                            <p><i class="icon-phone"></i>076 777 41 64</p>
-                            <p><i class="icon-location"></i>Linköping, Sverige</p>
-                        </div>
-                        
-                    </div>    
-                    <!-- LETTER -->
-                               
-
                     <h2 class="section-title"><span><i class="icon-doc-alt"></i>LADDA NER CV</span></h2>
                     
-                    <p>Ladda gärna ner mitt CV i pdf format. Jag söker just nu jobb och brinner för python och django.</p>
+                    <p>Ladda gärna ner mitt CV i PDF format. Jag söker just nu jobb och brinner för python och django.</p>
                     
                     <!-- DOWNLOAD BUTTON -->
                     <div class="download-button">
@@ -380,21 +352,9 @@
                         <a href="#" class="button primary">LINKEDIN PROFIL</a>
                     </div>
                     <!-- DOWNLOAD BUTTON -->
-
-                    <h2 class="section-title"><span><i class="icon-github-circled"></i>KOLLA IN MIN GITHUB</span></h2>
-                    
-                    <p>Mina hemliga projekt.</p>
-                    
-                    <!-- DOWNLOAD BUTTON -->
-                    <div class="download-button">
-                        <a href="#" class="button button-icon big blue colored"><i class="fa fa-github"></i>GITHUB</a>
-                    </div>
-                    <a href="#" class="button button-icon big red colored"><i class="fa fa-github"></i>GITHUB</a>
-
-                    <!-- DOWNLOAD BUTTON -->       
-                
-               </div>
-               <!-- col 6/12 -->
+ 
+                </div>
+                 <!-- col 6/12 -->
         
         
         </div>                       
