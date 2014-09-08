@@ -50,18 +50,20 @@ from __future__ import absolute_import, unicode_literals
 # args and a dictionary of keyword args, to use when creating the
 # field instance. When specifying the field class, the path
 # ``django.models.db.`` can be omitted for regular Django model fields.
-#
+
+
 # EXTRA_MODEL_FIELDS = (
 #     (
 #         # Dotted path to field.
-#         "mezzanine.blog.models.BlogPost.image",
+#         "mezzanine.galleries.models.GalleryImage.category",
 #         # Dotted path to field class.
-#         "somelib.fields.ImageField",
+#         "CharField",
 #         # Positional args for field class.
-#         ("Image",),
+#         ("category",),
 #         # Keyword args for field class.
-#         {"blank": True, "upload_to": "blog"},
+#         {"max_length":50},
 #     ),
+# )
 #     # Example of adding a field to *all* of Mezzanine's content types:
 #     (
 #         "mezzanine.pages.models.Page.another_field",
@@ -70,6 +72,18 @@ from __future__ import absolute_import, unicode_literals
 #         {"blank": True, "default": 1},
 #     ),
 # )
+
+# Field injection for GalleryImage category
+# EXTRA_MODEL_FIELDS = (
+#     (
+#         "mezzanine.galleries.models.GalleryImage.category",
+#         "CharField",
+#         ("Category",),
+#         {"max_length": 255},
+#     ),
+# )
+
+
 
 # Setting to turn on featured images for blog posts. Defaults to False.
 #
@@ -88,13 +102,13 @@ USE_SOUTH = True
 # In the format (('Full Name', 'email@example.com'),
 #                ('Full Name', 'anotheremail@example.com'))
 ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
+    ('Jonathan', 'jonatan.doherty.work@gmail.com'),
 )
 MANAGERS = ADMINS
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = []
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -103,25 +117,20 @@ ALLOWED_HOSTS = []
 # timezone as the operating system.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = None
+TIME_ZONE = 'Europe/Stockholm'
 
 # If you set this to True, Django will use timezone-aware datetimes.
 USE_TZ = True
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = "en"
+LANGUAGE_CODE = "sv-SE"
 
 # Supported languages
 _ = lambda s: s
 LANGUAGES = (
     ('en', _('English')),
 )
-
-# A boolean that turns on/off debug mode. When set to ``True``, stack traces
-# are displayed for error pages. Should always be set to ``False`` in
-# production. Best set to ``True`` in local_settings.py
-DEBUG = False
 
 # Whether a user's session cookie expires when the Web browser is closed.
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
@@ -130,7 +139,7 @@ SITE_ID = 1
 
 # If you set this to False, Django will make some optimizations so as not
 # to load the internationalization machinery.
-USE_I18N = False
+USE_I18N = True
 
 # Tuple of IP addresses, as strings, that:
 #   * See debug comments, when DEBUG is true
@@ -150,7 +159,7 @@ AUTHENTICATION_BACKENDS = ("mezzanine.core.auth_backends.MezzanineBackend",)
 STATICFILES_FINDERS = (
     "django.contrib.staticfiles.finders.FileSystemFinder",
     "django.contrib.staticfiles.finders.AppDirectoriesFinder",
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    #'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # The numeric mode to set newly-uploaded files to. The value should be
@@ -199,22 +208,22 @@ CACHE_MIDDLEWARE_KEY_PREFIX = PROJECT_DIRNAME
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = "/static/"
+#STATIC_URL = "/static/"
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = os.path.join(PROJECT_ROOT, STATIC_URL.strip("/"))
+#STATIC_ROOT = os.path.join(PROJECT_ROOT, STATIC_URL.strip("/"))
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = STATIC_URL + "media/"
+#MEDIA_URL = STATIC_URL + "media/"
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, *MEDIA_URL.strip("/").split("/"))
+#MEDIA_ROOT = os.path.join(PROJECT_ROOT, *MEDIA_URL.strip("/").split("/"))
 
 # Package/module name to import the root urlpatterns from for the project.
 ROOT_URLCONF = "%s.urls" % PROJECT_DIRNAME
@@ -251,7 +260,12 @@ INSTALLED_APPS = (
     "mezzanine.twitter",
     #"mezzanine.accounts",
     #"mezzanine.mobile",
+    #'crispy_forms',
+    'gunicorn',
 )
+
+# django-crispy-forms
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 # List of processors used by RequestContext to populate the context.
 # Each one should be a callable that takes the request object as its
@@ -332,6 +346,195 @@ OPTIONAL_APPS = (
 #     "SECRET_KEY": SECRET_KEY,
 #     "NEVERCACHE_KEY": NEVERCACHE_KEY,
 # }
+
+
+###################
+# HEROKU SETTINGS #
+###################
+
+# Parse database configuration from $DATABASE_URL
+import dj_database_url
+DATABASES['default'] =  dj_database_url.config()
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Allow all host headers
+ALLOWED_HOSTS = ['*']
+
+##################
+# DJANGO         #
+##################
+SECRET_KEY = os.environ.get("SECRET_KEY", "")
+NEVERCACHE_KEY = os.environ.get("NEVERCACHE_KEY", "")
+
+
+#####################
+# CUSTOM THUMBNAILS #
+# THAT WORK WITH S3 #
+#####################
+
+#
+# Bypass Mezzanines default thumbnails code by installing django-smart-load-tag
+# and using sorl-thumbnails or easy_thumbnails etc without ugly hacks
+#
+# See: https://github.com/codysoyland/django-smart-load-tag
+#
+#INSTALLED_APPS += ('smart_load_tag',)
+
+#
+# Use sorl-thumbnail instead of Mezzanines default one that does not work with S3
+#
+# See: http://sorl-thumbnail.readthedocs.org
+#
+#INSTALLED_APPS += ('sorl.thumbnail',)
+
+
+
+###################
+# CACHE #
+###################
+#from memcacheify import memcacheify
+
+#CACHES = memcacheify()
+
+
+#############################
+# CUSTOM MEZZANINE SETTINGS #
+#############################
+FORMS_USE_HTML5 = True
+
+# A boolean that turns on/off debug mode. When set to ``True``, stack traces
+# are displayed for error pages. Should always be set to ``False`` in
+# production. Best set to ``True`` in local_settings.py
+DEBUG = False
+
+
+###################
+# S3 STATIC FILES #
+###################
+
+# KNOWN BUGS -- https://www.mail-archive.com/mezzanine-users@googlegroups.com/msg01543.html
+# July 30, 2014
+#
+# (1.)
+# https://github.com/boto/boto/issues/1477
+#
+# (2.)
+# https://bitbucket.org/david/django-storages/issue/181/from-s3-import-callingformat-seems-broke
+# 
+# try:
+#     from S3 import CallingFormat
+#     AWS_CALLING_FORMAT = CallingFormat.SUBDOMAIN
+# except ImportError:
+#     # TODO: Fix this where even if in Dev this class is called.
+#     pass
+# 
+# The below link explains some of the settings in Boto which you can configure tp optimise etc.
+# http://www.laurii.info/2013/05/improve-s3boto-djangostorages-performance-custom-settings/
+#
+
+
+#
+# django-storages settings
+# See: http://django-storages.readthedocs.org/en/latest/backends/amazon-S3.html#settings
+#
+INSTALLED_APPS += ('storages',)
+
+# Also uninstall filebrowser-safe to default django with bin/post_compile.py heroku hook
+
+# See: http://django-storages.readthedocs.org/en/latest/backends/amazon-S3.html#settings
+STATICFILES_STORAGE = DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+# See: http://django-storages.readthedocs.org/en/latest/backends/amazon-S3.html#settings
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID", "")
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY", "")
+AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME", "")
+
+AWS_QUERYSTRING_AUTH = False #This will make sure that the URLs to the files are generated WITHOUT the extra parameters.
+AWS_PRELOAD_METADATA = True #helps collectstatic do updates
+#AWS_S3_SECURE_URLS = False
+#AWS_S3_ENCRYPTION =  False
+#AWS_S3_SECURE_URLS=False
+#AWS_AUTO_CREATE_BUCKET = True #better to create own bucket with right region then auto-create on us-region.
+
+STATIC_URL = '//' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
+MEDIA_URL = '//' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
+ADMIN_MEDIA_PREFIX = STATIC_URL + 'grappelli/'
+
+# Only used if you want to push all files with collectstatic from developer env to S3 or some place. 
+#STATIC_ROOT = 'DOESNOTMATTER' 
+#MEDIA_ROOT = 'DOESNOTMATTER' 
+
+
+
+############################
+# ADVANCED S3 STATIC FILES #
+############################
+
+# s3boto already has subdomain set on default so no need to change or touch this
+# Subdomain = <BUCKETNAME>.s3.amazonaws.com/
+#AWS_CALLING_FORMAT 
+
+
+# AWS_HEADERS (optional)
+# From: https://github.com/pydanny/cookiecutter-django/ 
+# AWS cache settings, don't change unless you know what you're doing:
+#AWS_EXPIREY = 60 * 60 * 24 * 7
+#AWS_HEADERS = {
+#    'Cache-Control': 'max-age=%d, s-maxage=%d, must-revalidate' % (AWS_EXPIREY,
+#        AWS_EXPIREY)
+#}
+
+
+# But anyway, in order to force s3boto to return s3 objects over http, 
+# you need to add this to your settings.py:
+# AWS_S3_SECURE_URLS = False
+
+
+
+###########
+# LOGGING #
+###########
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': True,
+}
+##################
+# MAIL SETTINGS #
+##################
+
+# Easy setup with sendgrid.com or similar service
+#EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+#EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+#EMAIL_HOST= "smtp.hostname.com"
+#EMAIL_PORT = 587
+#EMAIL_USE_TLS = True
+
+
+# EMAIL_BACKEND = 'django_ses.SESBackend' 
+# AWS_ACCESS_KEY_ID = 'LONGSTRINGHERE' 
+# AWS_SECRET_ACCESS_KEY = 'EVENLONGERSTRINGHERE' 
+# EMAIL_HOST_USER = 'MYAMAZONSESUSER' 
+# EMAIL_USE_TLS = True 
+# EMAIL_HOST = 'email-smtp.us-east-1.amazonaws.com' 
+# # The next two lines may not be required; try without them first. 
+# DEFAULT_FROM_EMAIL = SERVER_EMAIL = 'you@yourdomain.com' 
+# FORMS_DISABLE_SEND_FROM_EMAIL_FIELD = True 
+# # The next line is not required, but may be useful. 
+# SEND_BROKEN_LINK_EMAILS = True
+
+#
+# SENDGRID - https://sendgrid.com/docs/Integrate/Frameworks/django.html
+# 
+
+# Default sendgrid settings
+#EMAIL_HOST = 'smtp.sendgrid.net'
+#EMAIL_HOST_USER = os.environ.get("SENDGRID_USERNAME", "")
+#EMAIL_HOST_PASSWORD = os.environ.get("SENDGRID_PASSWORD", "")
+#EMAIL_PORT = 587
+#EMAIL_USE_TLS = True
 
 
 ##################
